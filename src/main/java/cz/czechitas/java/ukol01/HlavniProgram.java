@@ -144,24 +144,8 @@ public class HlavniProgram {
     }
 
     public void drawHead(double firstAngle, Direction firstTurn, double secondAngle, Direction secondTurn, double sideLength) {
-        switch (firstTurn) {
-            case RIGHT:
-                zofka.turnRight(firstAngle);
-                zofka.move(sideLength);
-                break;
-            case LEFT:
-                zofka.turnLeft(firstAngle);
-                zofka.move(sideLength);
-        }
-        switch (secondTurn) {
-            case RIGHT:
-                zofka.turnRight(secondAngle);
-                zofka.move(sideLength);
-                break;
-            case LEFT:
-                zofka.turnLeft(secondAngle);
-                zofka.move(sideLength);
-        }
+        turnAndMove(firstAngle, sideLength, firstTurn);
+        turnAndMove(secondAngle, sideLength, secondTurn);
     }
 
     // 2.PART
