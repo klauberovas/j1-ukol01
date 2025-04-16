@@ -42,7 +42,7 @@ public class HlavniProgram {
 //        drawSunRays(20, 20, 6, 18);
 
         // 3.PART
-//        drawPicture();
+        drawPicture();
     }
 
     public void goToDefaultPosition(double firstAngle, double firstDistance, Direction firstDirection, double secondAngle, double secondDistance, Direction secondDirection) {
@@ -216,33 +216,33 @@ public class HlavniProgram {
 
     // 4.PART
     public void drawName() {
-        // default position
+        // default position + Š
         moveTo(300, 500);
         zofka.turnRight(90);
         drawS();
         // diacritics
         moveTo(zofka.getX() - 20, zofka.getY() - 20);
         drawLegs(190);
-        // default position
+        // default position + Á
         moveTo(zofka.getX() + 30, 500);
         zofka.turnRight(150);
         drawA();
         // diacritics
         moveTo(zofka.getX() + 15, zofka.getY() - 40);
         turnAndMove(110, 30, Direction.RIGHT);
-        // default position
+        // default position + R
         moveTo(zofka.getX() + 30, 500);
         zofka.turnRight(-20);
         drawR();
-        // default position
+        // default position + K
         moveTo(zofka.getX() + 20, 500);
         zofka.turnLeft(140);
         drawK();
-        // default position
+        // default position + A
         moveTo(zofka.getX() + 10, 500);
         zofka.turnLeft(145);
         drawA();
-        // default position
+        // END
         moveTo(zofka.getX() + 60, 500);
         zofka.turnRight(90);
     }
