@@ -25,23 +25,20 @@ public class HlavniProgram {
 
 //        // 1.PART
 //        drawPiggy(100, 50);
-
+//
 //        // 2.PART
-//        // Back to default position
 //        goToDefaultPosition(90, 140, Direction.LEFT, 90, 50, Direction.LEFT);
 //        // Octagon
-//        drawOctagon();
-//        // Back to default position
+//        drawCurve(8, 30, 45, Direction.RIGHT);
 //        goToDefaultPosition(90, 90, Direction.RIGHT, 90, 30, Direction.RIGHT);
 //        // Circle
 //        drawCurve(20, 12, 18, Direction.LEFT);
-//        //Back to default position
 //        goToDefaultPosition(90, 180, Direction.LEFT, 90, 12, Direction.LEFT);
 //        // Sun
 //        drawCurve(20, 12, 18, Direction.LEFT);
 //        drawSunRays(20, 20, 6, 18);
 
-        // 3.PART
+//        // 3.PART
         drawPicture();
     }
 
@@ -127,13 +124,6 @@ public class HlavniProgram {
     }
 
     // 2.PART
-    public void drawOctagon() {
-        for (int i = 0; i < 8; i++) {
-            zofka.turnRight(45);
-            zofka.move(30);
-        }
-    }
-
     public void drawCurve(int steps, double stepLength, double circleAngle, Direction circleDirection) {
         for (int i = 0; i < steps; i++) {
             turnAndMove(circleAngle, stepLength, circleDirection);
@@ -198,6 +188,7 @@ public class HlavniProgram {
         drawName();
     }
 
+    // DRAW HOUSE
     public void drawHouse(double houseLength, double houseHeight) {
         drawBody(houseLength, houseHeight);
         drawRoof(houseLength);
@@ -214,7 +205,7 @@ public class HlavniProgram {
         turnAndMove(120, houseLength, Direction.RIGHT);
     }
 
-    // 4.PART
+    // NAME
     public void drawName() {
         // default position + Š
         moveTo(300, 500);
