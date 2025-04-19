@@ -17,39 +17,52 @@ public class HlavniProgram {
 
     public void start() {
         zofka = new Turtle();
-        // Settings for turtle
         zofka.setPenColor(Color.black);
         zofka.setPenWidth(4);
 
         //TODO implementace domácího úkolu
+//        partOne();
+//        partTwo();
+        partThree();
+        partFour();
+    }
 
-//        // 1.PART
-//        drawPiggy(100, 50);
-//
-//        // 2.PART
-//        goToDefaultPosition(90, 140, Direction.LEFT, 90, 50, Direction.LEFT);
-//        // Octagon
-//        drawCurve(8, 30, 45, Direction.RIGHT);
-//        goToDefaultPosition(90, 90, Direction.RIGHT, 90, 30, Direction.RIGHT);
-//        // Circle
-//        drawCurve(20, 12, 18, Direction.LEFT);
-//        goToDefaultPosition(90, 180, Direction.LEFT, 90, 12, Direction.LEFT);
-//        // Sun
-//        drawCurve(20, 12, 18, Direction.LEFT);
-//        drawSunRays(20, 20, 6, 18);
+    // Part 1 - Pig
+    public void partOne() {
+        drawPiggy(100, 50);
+    }
 
-//        // 3.PART
+    // Part 2 - Geometric shapes
+    public void partTwo() {
+        moveToDefaultPosition(90, 140, Direction.LEFT, 90, 50, Direction.LEFT);
+        drawCurve(8, 30, 45, Direction.RIGHT); // Octagon
+
+        moveToDefaultPosition(90, 90, Direction.RIGHT, 90, 30, Direction.RIGHT);
+        drawCurve(20, 12, 18, Direction.LEFT); // Circle
+
+        moveToDefaultPosition(90, 180, Direction.LEFT, 90, 12, Direction.LEFT);
+        drawCurve(20, 12, 18, Direction.LEFT); // Sun
+        drawSunRays(20, 20, 6, 18);
+    }
+
+    // Part 3 - Village composition
+    public void partThree() {
         drawPicture();
     }
 
-    public void goToDefaultPosition(double firstAngle, double firstDistance, Direction firstDirection, double secondAngle, double secondDistance, Direction secondDirection) {
+    // Part 4 - Name
+    public void partFour() {
+        drawName();
+    }
+
+    private void moveToDefaultPosition(double firstAngle, double firstDistance, Direction firstDirection, double secondAngle, double secondDistance, Direction secondDirection) {
         zofka.penUp();
         turnAndMove(firstAngle, firstDistance, firstDirection);
         turnAndMove(secondAngle, secondDistance, secondDirection);
         zofka.penDown();
     }
 
-    public void turnAndMove(double angle, double distance, Direction turn) {
+    private void turnAndMove(double angle, double distance, Direction turn) {
         if (turn == Direction.RIGHT) {
             zofka.turnRight(angle);
         } else {
@@ -58,33 +71,25 @@ public class HlavniProgram {
         zofka.move(distance);
     }
 
-    public void moveTo(double x, double y) {
+    private void moveTo(double x, double y) {
         zofka.penUp();
         zofka.setLocation(x, y);
         zofka.penDown();
     }
 
-    // PIG
-    public void drawPiggy(double bodyLength, double bodyHeight) {
-        // top line of the body
-        turnAndMove(90, bodyLength, Direction.RIGHT);
-        // right side of the body
-        turnAndMove(90, bodyHeight, Direction.RIGHT);
-        // pig tail of the body
-        drawPigTail(bodyHeight);
-        // back legs
-        drawLegs(30);
-        // bottom line of the body
-        turnAndMove(120, bodyLength, Direction.LEFT);
-        // front legs
-        drawLegs(120);
-        // head
-        drawHead(90, Direction.LEFT, 120, Direction.RIGHT, 50);
-        // left side of the body
-        turnAndMove(120, bodyHeight, Direction.RIGHT);
+    // Pig drawing methods
+    private void drawPiggy(double bodyLength, double bodyHeight) {
+        turnAndMove(90, bodyLength, Direction.RIGHT); // top line of the body
+        turnAndMove(90, bodyHeight, Direction.RIGHT); // right side of the body
+        drawPigTail(bodyHeight);// pig tail of the body
+        drawLegs(30); // back legs
+        turnAndMove(120, bodyLength, Direction.LEFT);// bottom line of the body
+        drawLegs(120); // front legs
+        drawHead(90, Direction.LEFT, 120, Direction.RIGHT, 50); // head
+        turnAndMove(120, bodyHeight, Direction.RIGHT); // left side of the body
     }
 
-    public void drawPigTail(double sideLength) {
+    private void drawPigTail(double sideLength) {
         zofka.penUp();
         zofka.move(-sideLength / 2);
         zofka.turnLeft(90);
@@ -107,7 +112,7 @@ public class HlavniProgram {
         zofka.penDown();
     }
 
-    public void drawLegs(double angle) {
+    private void drawLegs(double angle) {
         zofka.turnLeft(angle);
         zofka.move(40);
         zofka.penUp();
@@ -118,19 +123,19 @@ public class HlavniProgram {
         zofka.move(40);
     }
 
-    public void drawHead(double firstAngle, Direction firstTurn, double secondAngle, Direction secondTurn, double sideLength) {
+    private void drawHead(double firstAngle, Direction firstTurn, double secondAngle, Direction secondTurn, double sideLength) {
         turnAndMove(firstAngle, sideLength, firstTurn);
         turnAndMove(secondAngle, sideLength, secondTurn);
     }
 
-    // 2.PART
-    public void drawCurve(int steps, double stepLength, double circleAngle, Direction circleDirection) {
+    // Geometric shapes
+    private void drawCurve(int steps, double stepLength, double circleAngle, Direction circleDirection) {
         for (int i = 0; i < steps; i++) {
             turnAndMove(circleAngle, stepLength, circleDirection);
         }
     }
 
-    public void drawSunRays(int steps, double rayLength, double circleStepLength, double circleAngle) {
+    private void drawSunRays(int steps, double rayLength, double circleStepLength, double circleAngle) {
         boolean canDraw = true;
         for (int i = 0; i < steps; i++) {
             zofka.turnLeft(circleAngle);
@@ -149,8 +154,8 @@ public class HlavniProgram {
         }
     }
 
-    // 3.PART
-    public void drawPicture() {
+    // Village composition
+    private void drawPicture() {
         // Sun
         moveTo(400, 50);
         drawCurve(26, 6, 14, Direction.LEFT);// Sun
@@ -161,18 +166,17 @@ public class HlavniProgram {
         zofka.turnLeft(172);
         for (int i = 0; i < 5; i++) {
             drawHouse(50, 70);
-
             if (i < 4) {
                 moveTo(zofka.getX() + 130, zofka.getY());
                 zofka.turnLeft(90);
             }
         }
 
-        // MIDDLE ROW
+        // Middle row
         moveTo(zofka.getX() + 50, 300);
         zofka.turnLeft(90);
 
-        // Right-side house
+        // Right house
         drawHouse(50, 70);
 
         // Piggy
@@ -180,65 +184,65 @@ public class HlavniProgram {
         zofka.turnRight(90);
         drawPiggy(70, 50);
 
-        // Left-side house
+        // Left house
         moveTo(300, 300);
         drawHouse(50, 70);
 
-        // 4.PART
-        drawName();
     }
 
-    // DRAW HOUSE
-    public void drawHouse(double houseLength, double houseHeight) {
+    // House components
+    private void drawHouse(double houseLength, double houseHeight) {
         drawBody(houseLength, houseHeight);
         drawRoof(houseLength);
     }
 
-    public void drawBody(double houseLength, double houseHeight) {
+    private void drawBody(double houseLength, double houseHeight) {
         zofka.move(houseHeight);
         turnAndMove(90, houseLength, Direction.RIGHT);
         turnAndMove(90, houseHeight, Direction.RIGHT);
     }
 
-    public void drawRoof(double houseLength) {
+    private void drawRoof(double houseLength) {
         drawHead(30, Direction.RIGHT, 120, Direction.RIGHT, houseLength);
         turnAndMove(120, houseLength, Direction.RIGHT);
     }
 
-    // NAME
-    public void drawName() {
-        // default position + Š
+    // Name drawing
+    private void drawName() {
         moveTo(300, 500);
         zofka.turnRight(90);
         drawS();
+
         // diacritics
         moveTo(zofka.getX() - 20, zofka.getY() - 20);
         drawLegs(190);
-        // default position + Á
+
         moveTo(zofka.getX() + 30, 500);
         zofka.turnRight(150);
         drawA();
+
         // diacritics
         moveTo(zofka.getX() + 15, zofka.getY() - 40);
         turnAndMove(110, 30, Direction.RIGHT);
-        // default position + R
+
         moveTo(zofka.getX() + 30, 500);
         zofka.turnRight(-20);
         drawR();
-        // default position + K
+
         moveTo(zofka.getX() + 20, 500);
         zofka.turnLeft(140);
         drawK();
-        // default position + A
+
         moveTo(zofka.getX() + 10, 500);
         zofka.turnLeft(145);
         drawA();
-        // END
+
         moveTo(zofka.getX() + 60, 500);
         zofka.turnRight(90);
     }
 
-    public void drawS() {
+    // Letter components
+    private void drawS() {
         turnAndMove(110, 15, Direction.RIGHT);
         for (int i = 0; i < 11; i++) {
             turnAndMove(20, 7, Direction.LEFT);
@@ -249,20 +253,20 @@ public class HlavniProgram {
         }
     }
 
-    public void drawA() {
+    private void drawA() {
         turnAndMove(20, 80, Direction.RIGHT);
         turnAndMove(140, 80, Direction.RIGHT);
         turnAndMove(180, 40, Direction.RIGHT);
         turnAndMove(70, 25, Direction.LEFT);
     }
 
-    public void drawR() {
+    private void drawR() {
         zofka.move(60);
         drawCurve(20, 7, 16, Direction.RIGHT);
         turnAndMove(180, 60, Direction.RIGHT);
     }
 
-    public void drawK() {
+    private void drawK() {
         zofka.move(80);
         turnAndMove(180, 40, Direction.RIGHT);
         turnAndMove(145, 48, Direction.LEFT);
